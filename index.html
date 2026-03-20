@@ -5,18 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Surprise for You ♡</title>
     <style>
-        /* Pengaturan Dasar */
         body {
             margin: 0; padding: 0; 
             display: flex; justify-content: center; align-items: center; 
             min-height: 100vh;
             background-color: #f0f8ff;
-            /* Pattern latar belakang yang lucu */
             background-image: url('https://www.transparenttextures.com/patterns/cubes.png'); 
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        /* Kartu Utama */
         .card {
             background: white; 
             padding: 30px; 
@@ -30,7 +27,7 @@
         }
 
         .card img { 
-            width: 130px; 
+            width: 100%; 
             margin-bottom: 20px; 
             border-radius: 10px; 
         }
@@ -38,7 +35,6 @@
         h2 { color: #5a8fb9; margin-bottom: 10px; font-size: 20px; font-weight: 600; }
         p { color: #888; font-size: 14px; margin-bottom: 15px; }
 
-        /* Gaya Tombol */
         .btn-container { 
             display: flex; 
             justify-content: center; 
@@ -57,15 +53,11 @@
         }
 
         .btn-yes { background-color: #a1c9f2; color: white; }
-        .btn-yes:hover { background-color: #8db9e5; transform: scale(1.05); }
-        
-        .btn-no { background-color: #f5f5f5; color: #999; }
+        .btn-no { background-color: #f5f5f5; color: #999; position: relative; }
 
-        /* Navigasi Halaman */
         .page { display: none; }
         .active { display: block; }
 
-        /* PESAN OPSI 2 - KHUSUS HURUF KECIL */
         .lowercase-message {
             text-align: left; 
             font-size: 13.5px; 
@@ -74,7 +66,7 @@
             border-top: 1px solid #f0f0f0; 
             padding-top: 15px; 
             margin-top: 15px;
-            text-transform: lowercase; /* Ini rahasia biar otomatis kecil semua */
+            text-transform: lowercase;
         }
 
         @keyframes fadeIn {
@@ -87,17 +79,19 @@
 
     <!-- HALAMAN 1: PERTANYAAN -->
     <div class="card page active" id="page1">
-        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJtZmxueXF4eXJyeXhyeXhyeXhyeXhyeXhyeXhyeXhyeXhyeCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/vV9SbgYI9W5l5O9019/giphy.gif" alt="Snoopy Shy">
-        <h2>Do you love me? 0_0</h2>
+        <!-- GIF UTAMA -->
+        <img id="main-gif" src="79ea6ffa1ca3345b59042a9ce9638dfc.gif">
+        <h2 id="question-text">Do you love me? 0_0</h2>
         <div class="btn-container">
             <button class="btn-yes" onclick="showPage('page2')">Yes!</button>
-            <button class="btn-no" onclick="alert('awhh try again pls, i think this web is error TwT')">No</button>
+            <!-- Tombol NO yang bisa berubah GIF dan lari -->
+            <button id="btn-no" class="btn-no" onmouseover="moveNo()" onclick="moveNo()">No</button>
         </div>
     </div>
 
     <!-- HALAMAN 2: RESPON SETELAH YES -->
     <div class="card page" id="page2">
-        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJtZmxueXF4eXJyeXhyeXhyeXhyeXhyeXhyeXhyeXhyeXhyeCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/K77qA19L5ZJ0N65XnS/giphy.gif" alt="Happy Snoopy">
+        <img src="807b5c4b02e765bb4930b7e66699264c.gif" alt="Happy">
         <h2 style="color: #ffb7c5;">SoOo sweet, I love u more sayang 💞</h2>
         <p>Ada satu pesan lagi nih buat kamu...</p>
         <div class="btn-container">
@@ -105,7 +99,7 @@
         </div>
     </div>
 
-    <!-- HALAMAN 3: PESAN AKHIR (LOWERCASE) -->
+    <!-- HALAMAN 3: PESAN AKHIR -->
     <div class="card page" id="page3">
         <p>(^◡^)</p>
         <div class="lowercase-message">
@@ -123,13 +117,25 @@
     </div>
 
     <script>
-        // Fungsi untuk pindah-pindah halaman
         function showPage(pageId) {
             const pages = document.querySelectorAll('.page');
             pages.forEach(p => p.classList.remove('active'));
             document.getElementById(pageId).classList.add('active');
         }
+
+        function moveNo() {
+            // Ganti GIF jadi sedih (pakai file GIF lain yang kamu upload)
+            document.getElementById('main-gif').src = "659781f6460a12ea529eb0bf195f9cc9.gif";
+            document.getElementById('question-text').innerHTML = "ih kok no sih? :( ";
+
+            // Bikin tombol No lari-lari
+            const btn = document.getElementById('btn-no');
+            const x = Math.random() * (window.innerWidth - btn.offsetWidth);
+            const y = Math.random() * (window.innerHeight - btn.offsetHeight);
+            btn.style.position = 'fixed';
+            btn.style.left = x + 'px';
+            btn.style.top = y + 'px';
+        }
     </script>
 </body>
-  </html>
-
+</html
