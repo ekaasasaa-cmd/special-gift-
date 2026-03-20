@@ -77,29 +77,26 @@
 </head>
 <body>
 
-    <!-- HALAMAN 1: PERTANYAAN -->
     <div class="card page active" id="page1">
-        <!-- GIF UTAMA -->
         <img id="main-gif" src="79ea6ffa1ca3345b59042a9ce9638dfc.gif">
         <h2 id="question-text">Do you love me? 0_0</h2>
         <div class="btn-container">
             <button class="btn-yes" onclick="showPage('page2')">Yes!</button>
-            <!-- Tombol NO yang bisa berubah GIF dan lari -->
             <button id="btn-no" class="btn-no" onmouseover="moveNo()" onclick="moveNo()">No</button>
         </div>
     </div>
 
-    <!-- HALAMAN 2: RESPON SETELAH YES -->
+
     <div class="card page" id="page2">
-        <img src="807b5c4b02e765bb4930b7e66699264c.gif" alt="Happy">
-        <h2 style="color: #ffb7c5;">SoOo sweet, I love u more sayang 💞</h2>
-        <p>Ada satu pesan lagi nih buat kamu...</p>
+        <img src="99ce134bb2afa4c5e13efe99fb0fe7ab.gif" alt="Happy">
+        <h2 style="color: #ffb7c5;">SoOo sweet, i love u more sayang 💞</h2>
+        <p>ada satu pesan lagi nih buat kamu...</p>
         <div class="btn-container">
             <button class="btn-yes" onclick="showPage('page3')">Next ✨</button>
         </div>
     </div>
 
-    <!-- HALAMAN 3: PESAN AKHIR -->
+    
     <div class="card page" id="page3">
         <p>(^◡^)</p>
         <div class="lowercase-message">
@@ -124,11 +121,11 @@
         }
 
         function moveNo() {
-            // Ganti GIF jadi sedih (pakai file GIF lain yang kamu upload)
+            
             document.getElementById('main-gif').src = "659781f6460a12ea529eb0bf195f9cc9.gif";
             document.getElementById('question-text').innerHTML = "ih kok no sih? :( ";
 
-            // Bikin tombol No lari-lari
+        
             const btn = document.getElementById('btn-no');
             const x = Math.random() * (window.innerWidth - btn.offsetWidth);
             const y = Math.random() * (window.innerHeight - btn.offsetHeight);
